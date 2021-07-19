@@ -7,7 +7,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Container>
+        <Container
+        style={{
+          maxWidth: '90vw'
+        }}
+        >
           <Row>
             <TextIn />
             <TextOut />
