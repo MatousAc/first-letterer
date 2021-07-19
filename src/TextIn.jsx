@@ -3,12 +3,20 @@ import { Col, Card, Button } from 'react-bootstrap'
 import './fl.css';
 
 export default function TextIn() {
-  const [input, setInput] = useState('')
+  // const [input, setInput] = useState('')
   /// new verse flag
   var newVerseFlag = true
+  var rawText
   
   function updateInput(e) {
-    setInput(e.target.value)
+    // console.log(`updated to: ${input}`)
+    // setInput(e.target.innerHTML)
+  }
+
+  function dq(s) {return document.querySelector(s)}
+
+  function simplifyText(text) {
+    
   }
 
   /// to clean up whitespace
@@ -78,25 +86,37 @@ export default function TextIn() {
     
     /// return the phrase separated from first letters with a tab
     /// and join the letters by four spaces
-    return `${phrase}\t${first_letters.join('    ')}`
+    // return `${phrase}\t${first_letters.join('    ')}`
+    return `TABGOESHERE${first_letters.join('    ')}`
   }
   
   function convertFormat() {
     // console.log(input.substring(0, 140))
     /// take the entire text and split up the lines
-    let phrases = input.split('\n')
+    rawText = dq("#textIn").innerHTML
+    console.log(rawText)
+    rawText = rawText.split("</p>")
+    let simpleText = dq("#hiddenTextArea").value
+    console.log(rawText)
+    console.log(simpleText)
+    let phrases = simpleText.split('\n')
     /// clean spaces out from the beginnings of the phrases
     phrases = cleanPhrases(phrases)
     // console.log(phrases)
     /// redefine the array using each line
     phrases = phrases.map(phrase => {
       ///    if it's part of a verse,  convert the format, otherwise don't
-      return needsConverting(phrase) ? convert(phrase) : phrase
+      return needsConverting(phrase) ? convert(phrase) : '' //phrase
     })
-    console.log(phrases)
-    let output = phrases.join('\n')
+
+    for (let i = 0; i < rawText.length; i++) {
+      rawText[i] += phrases[i]
+    }
+
+    // console.log(phrases)
+    let output = rawText.join('</p>')
     // console.log(output.substring(0, 140))
-    document.querySelector("#textOut").value = output
+    dq("#textOut").innerHTML = output
   }
   
   return (
@@ -104,7 +124,11 @@ export default function TextIn() {
     <p>paste</p>
     <Card>
       <Card.Body>
-        <textarea id="textIn" onChange={updateInput}>{input}</textarea>
+        <div 
+          id="textIn" 
+          contentEditable="true" 
+          // onChange={updateInput}
+        ></div>
       </Card.Body>
       <Card.Footer>
         <Button onClick={convertFormat} variant="dark">Add First Letters</Button>

@@ -1,9 +1,24 @@
 /* my own css */
 #textIn, #textOut
 {
-  height: 50em;
+  padding: 1% ;
+  height: 25em;
   max-height: 90vh;
   font-size: 13px;
   width: -webkit-fill-available;
   border: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: black;
+  text-align: left !important;
+}
+
+#hiddenTextArea
+{
+  font-size: 13px;
+  border: none;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  color: black;
+  text-align: left !important;
 }

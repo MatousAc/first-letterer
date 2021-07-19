@@ -2,6 +2,7 @@ import './App.css';
 import { Container, Row } from 'react-bootstrap'
 import TextIn from './TextIn';
 import TextOut from './TextOut';
+import HiddenTextArea from './HiddenTextArea';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Row>
             <TextIn />
             <TextOut />
+            <HiddenTextArea />
           </Row>
         </Container>
       </header>
