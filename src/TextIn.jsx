@@ -26,7 +26,7 @@ export default function TextIn() {
     /// remove trailing whitespace
     newPhrases = newPhrases.map(phrase => {
       let ps = phrase.split(' ')
-      return (ps[ps.length - 1] === '') ? phrase.substring(0, phrase.length - 2) : phrase
+      return (ps[ps.length - 1] === '') ? phrase.substring(0, phrase.length - 1) : phrase
     })
 
     return newPhrases
