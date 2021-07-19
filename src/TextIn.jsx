@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Col, Card, Button } from 'react-bootstrap'
 import './fl.css';
 
@@ -7,11 +7,6 @@ export default function TextIn() {
   /// new verse flag
   var newVerseFlag = true
   var rawText
-  
-  function updateInput(e) {
-    // console.log(`updated to: ${input}`)
-    // setInput(e.target.innerHTML)
-  }
 
   function dq(s) {return document.querySelector(s)}
 
