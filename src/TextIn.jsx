@@ -1,12 +1,17 @@
-import React, { useRef, useState } from 'react'
-import './fl.css';
+import React, { useState } from 'react'
 import { Col, Card, Button } from 'react-bootstrap'
+import './fl.css';
 
 export default function TextIn() {
-  // const [input, setInput] = useState('')
+  const [input, setInput] = useState('')
+  
+  function updateInput(e) {
+    setInput(e.target.value)
+  }
+  
+  function convertFormat() {
+    console.log(input.substring(0, 140))
 
-  const convertFormat = () => {
-    let input = useRef(null)
   }
   
   return (
@@ -14,10 +19,10 @@ export default function TextIn() {
     <p>paste</p>
     <Card>
       <Card.Body>
-        <textarea id="textIn"></textarea>
+        <textarea id="textIn" onChange={updateInput}>{input}</textarea>
       </Card.Body>
       <Card.Footer>
-        <Button onClick={convertFormat()} variant="dark">Add First Letters</Button>
+        <Button onClick={convertFormat} variant="dark">Add First Letters</Button>
       </Card.Footer>
     </Card>
   </Col>

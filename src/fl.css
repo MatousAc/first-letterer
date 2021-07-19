@@ -2,6 +2,7 @@
 #textIn, #textOut
 {
   height: 50em;
+  max-height: 90vh;
   font-size: 13px;
   width: -webkit-fill-available;
   border: none;
