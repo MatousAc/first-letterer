@@ -1,0 +1,8 @@
+/* my own css */
+#textIn, #textOut
+{
+  height: 50em;
+  font-size: 13px;
+  width: -webkit-fill-available;
+  border: none;
+}
