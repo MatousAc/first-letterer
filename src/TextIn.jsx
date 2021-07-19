@@ -6,7 +6,7 @@ export default function TextIn() {
   // const [input, setInput] = useState('')
 
   const convertFormat = () => {
-    let input = ''
+    let input = useRef(null)
   }
   
   return (
