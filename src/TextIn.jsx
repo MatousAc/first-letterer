@@ -11,6 +11,8 @@ export default function TextIn() {
     setInput(e.target.value)
   }
 
+  function dq(s) {return document.querySelector(s)}
+
   /// to clean up whitespace
   function cleanPhrases(phrases) {
     // split phrases
@@ -40,11 +42,9 @@ export default function TextIn() {
 
   function needsConverting(phrase) {
     if (phrase.includes("Chapter")||phrase.includes("chapter")) {
-      // console.log(`Chapter begining: ${phrase}`)
       return false
     }
 
-    // console.log(`flag is ${newVerseFlag}`)
     
     /// if there should be a new verse, but the first word is not a verse number,
     /// we assume it is a header and we don't need to convert that
@@ -64,17 +64,13 @@ export default function TextIn() {
   }
 
   function convert(phrase) {  
-    console.log(`converting ${phrase.substring(0, 10)}`)
     let words = phrase.split(' ')
     
-    console.log(words)
     words = cleanWords(words)
-    console.log(words)
     let first_letters = words.map(word => {
       /// get first letter, capitalize it
       return isNaN(word) ? word.substring(0, 1).toUpperCase() : `${word}`
     })
-    console.log(first_letters)
     
     /// return the phrase separated from first letters with a tab
     /// and join the letters by four spaces
@@ -82,20 +78,16 @@ export default function TextIn() {
   }
   
   function convertFormat() {
-    // console.log(input.substring(0, 140))
     /// take the entire text and split up the lines
     let phrases = input.split('\n')
     /// clean spaces out from the beginnings of the phrases
     phrases = cleanPhrases(phrases)
-    // console.log(phrases)
     /// redefine the array using each line
     phrases = phrases.map(phrase => {
       ///    if it's part of a verse,  convert the format, otherwise don't
       return needsConverting(phrase) ? convert(phrase) : phrase
     })
-    console.log(phrases)
     let output = phrases.join('\n')
-    // console.log(output.substring(0, 140))
     document.querySelector("#textOut").value = output
   }
   
