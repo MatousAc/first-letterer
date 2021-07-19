@@ -6,7 +6,7 @@ function dq(s) {return document.querySelector(s)}
 
 export default function TextOut() {
   function copyText() {
-    let outText = dq("#textOut").innerHTML
+    let outText = dq("#textOut").value
     navigator.clipboard.writeText(outText)
   }
   
