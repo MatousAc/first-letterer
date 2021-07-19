@@ -30,13 +30,21 @@ export default function TextIn() {
     return newPhrases
   }
 
+  /// remove punctuation
+  function cleanWords(words) {
+    /// stripping punctuation using regex
+    return words.map(word => {
+      return word.replace(/[.,'‘’“”"\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+    })
+  }
+
   function needsConverting(phrase) {
     if (phrase.includes("Chapter")||phrase.includes("chapter")) {
-      console.log(`Chapter begining: ${phrase}`)
+      // console.log(`Chapter begining: ${phrase}`)
       return false
     }
 
-    console.log(`flag is ${newVerseFlag}`)
+    // console.log(`flag is ${newVerseFlag}`)
     
     /// if there should be a new verse, but the first word is not a verse number,
     /// we assume it is a header and we don't need to convert that
@@ -58,16 +66,23 @@ export default function TextIn() {
   function convert(phrase) {  
     console.log(`converting ${phrase.substring(0, 10)}`)
     let words = phrase.split(' ')
+    
+    console.log(words)
+    words = cleanWords(words)
+    console.log(words)
     let first_letters = words.map(word => {
       /// get first letter, capitalize it
-      return word.substring(0, 1).toUpperCase()
+      return isNaN(word) ? word.substring(0, 1).toUpperCase() : `${word}`
     })
     console.log(first_letters)
-    return phrase
+    
+    /// return the phrase separated from first letters with a tab
+    /// and join the letters by four spaces
+    return `${phrase}\t${first_letters.join('    ')}`
   }
   
   function convertFormat() {
-    console.log(input.substring(0, 140))
+    // console.log(input.substring(0, 140))
     /// take the entire text and split up the lines
     let phrases = input.split('\n')
     /// clean spaces out from the beginnings of the phrases
@@ -80,7 +95,7 @@ export default function TextIn() {
     })
     console.log(phrases)
     let output = phrases.join('\n')
-    console.log(output.substring(0, 140))
+    // console.log(output.substring(0, 140))
     document.querySelector("#textOut").value = output
   }
   
