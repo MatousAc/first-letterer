@@ -1,0 +1,15 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: right;
+  padding: 0.7rem 2rem;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%; 
+  margin: auto;
+  background-color: #282c34;
+
+  position: fixed;
+  top: 0;
+}
