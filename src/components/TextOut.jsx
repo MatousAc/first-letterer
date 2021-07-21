@@ -8,10 +8,6 @@ import CopyButton from './CopyButton';
 function dq(s) {return document.querySelector(s)}
 
 export default function TextOut() {
-  function copyText() {
-    let outText = dq("#textOut").value
-    navigator.clipboard.writeText(outText)
-  }
   
   return (
     <Col className="divider">
@@ -21,7 +17,7 @@ export default function TextOut() {
         <textarea id="textOut"></textarea>
       </Card.Body>
       <Card.Footer>
-        <CopyButton function={copyText}/>
+        <CopyButton text={dq("#textOut").value}/>
       </Card.Footer>
     </Card>
   </Col>

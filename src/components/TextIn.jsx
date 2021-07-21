@@ -13,12 +13,20 @@ export default function TextIn() {
   }
 
   /// helper functions
-  function dq(s) {return document.querySelector(s)}
   function isChapter(phrase) {return phrase.includes("Chapter")||phrase.includes("chapter")}
-  
+  function isTitle(phrase) {return newVerseFlag && isNaN(phrase.split(' ')[0])}
+  function setNewVerseFlag(phrase) {
+    if (phrase === "" ) {
+      newVerseFlag = true
+    } else {
+      newVerseFlag = false
+    }
+  }
+
   /// mark things as bold
   function markBold(phrase) {
-
+    if (isChapter(phrase)||isTitle(phrase)) return true
+    setNewVerseFlag(phrase)
     return false
   }
 
@@ -54,21 +62,16 @@ export default function TextIn() {
       return false
     }
 
-    
     /// if there should be a new verse, but the first word is not a verse number,
     /// we assume it is a header and we don't need to convert that
-    if (newVerseFlag && isNaN(phrase.split(' ')[0])) {
+    if (isTitle(phrase)) {
       return false
     }
     
     /// if there is an empty string, this must be the break between verses
-    if (phrase === "" ) {
-      newVerseFlag = true
-      return false
-    } else {
-      newVerseFlag = false
-    }
-    
+    setNewVerseFlag(phrase)
+    if (phrase === "" ) return false
+
     return true
   }
 
