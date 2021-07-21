@@ -13,14 +13,23 @@ export default function TextIn() {
   }
 
   /// helper functions
-  function dq(s) {return document.querySelector(s)}
   function isChapter(phrase) {return phrase.includes("Chapter")||phrase.includes("chapter")}
-  
-  /// mark things as bold
-  function markBold(phrase) {
-
-    return false
+  /// if there should be a new verse, but first word is NaN we assume it is a header
+  function isHeader(phrase) {return newVerseFlag && isNaN(phrase.split(' ')[0])}
+  function setNewVerseFlag(phrase) {
+    if (phrase === "" ) {
+      newVerseFlag = true
+    } else {
+      newVerseFlag = false
+    }
   }
+
+  /// mark things as bold
+  // function markBold(phrase) {
+  //   if (isChapter(phrase)||isHeader(phrase)) return true
+  //   setNewVerseFlag(phrase)
+  //   return false
+  // }
 
   /// to clean up whitespace
   function cleanPhrases(phrases) {
@@ -50,25 +59,13 @@ export default function TextIn() {
   }
 
   function needsConverting(phrase) {
-    if (isChapter(phrase)) {
-      return false
-    }
-
-    
-    /// if there should be a new verse, but the first word is not a verse number,
-    /// we assume it is a header and we don't need to convert that
-    if (newVerseFlag && isNaN(phrase.split(' ')[0])) {
-      return false
-    }
+    // we don't need to convert headers
+    if (isChapter(phrase)||isHeader(phrase)) return false
     
     /// if there is an empty string, this must be the break between verses
-    if (phrase === "" ) {
-      newVerseFlag = true
-      return false
-    } else {
-      newVerseFlag = false
-    }
-    
+    setNewVerseFlag(phrase)
+    if (phrase === "" ) return false
+
     return true
   }
 
@@ -91,11 +88,6 @@ export default function TextIn() {
     let phrases = input.split('\n')
     /// clean spaces out from the beginnings of the phrases
     phrases = cleanPhrases(phrases)
-
-    /// add MAKEBOLD markers
-    phrases = phrases.map(phrase => {
-      return markBold(phrase) ? `${phrase}MAKEBOLD` : phrase
-    })
     
     /// redefine the array using each line
     phrases = phrases.map(phrase => {
