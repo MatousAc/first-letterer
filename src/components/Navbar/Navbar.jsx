@@ -1,7 +1,7 @@
 import React from 'react'
 import { Nav } from 'react-bootstrap'
-import SimpleModal from "./SimpleModal";
-import Embolden from './Embolden';
+import SimpleModal from "../SimpleModal";
+import Embolden from '../Embolden/Embolden';
 import './navbar.css'
 
 

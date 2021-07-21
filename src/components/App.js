@@ -1,8 +1,8 @@
 import './App.css';
-import Navbar from './components/Navbar.jsx'
+import Navbar from './Navbar/Navbar.jsx'
 import { Container, Row } from 'react-bootstrap'
-import TextIn from './components/TextIn';
-import TextOut from './components/TextOut';
+import TextIn from './textInOut/TextIn';
+import TextOut from './textInOut/TextOut';
 
 function App() {
   return (

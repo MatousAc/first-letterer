@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
-import CopyButton from './CopyButton'
+import CopyButton from '../Buttons/CopyButton'
 import './embolden.css'
 
 export default function Embolden() {

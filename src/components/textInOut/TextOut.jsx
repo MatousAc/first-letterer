@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Card } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
 import './fl.css';
-import CopyButton from './CopyButton';
+import CopyButton from '../Buttons/CopyButton';
 
 
 function dq(s) {return document.querySelector(s)}

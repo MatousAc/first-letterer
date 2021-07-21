@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
-import Embolden from "./Embolden";
+import Embolden from "./Embolden/Embolden";
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
