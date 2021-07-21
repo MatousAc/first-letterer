@@ -7,7 +7,6 @@ import TextOut from './components/TextOut';
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <header className="App-header">
         <Container
         style={{
