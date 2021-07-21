@@ -15,6 +15,14 @@
   outline-color: #282c34 ;
 }
 
+#textIn::-webkit-scrollbar,
+#textOut::-webkit-scrollbar
+{
+  display: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .card-footer 
 {
   background-color: white !important;
