@@ -1,8 +1,8 @@
 import React from 'react'
 import { Col, Card } from 'react-bootstrap'
-import Button from '@material-ui/core/Button';
-import './inNout.css';
-import CopyButton from '../Buttons/CopyButton';
+import Button from '@material-ui/core/Button'
+import CopyButton from '../Buttons/CopyButton'
+import './inNout.css'
 
 
 function dq(s) {return document.querySelector(s)}
@@ -16,7 +16,7 @@ export default function TextOut() {
           <textarea id="textOut"></textarea>
         </Card.Body>
         <Card.Footer>
-          <CopyButton text={dq("#textOut").value}/>
+          <CopyButton text={dq("#textOut")?.value}/>
         </Card.Footer>
       </Card>
     </Col>
