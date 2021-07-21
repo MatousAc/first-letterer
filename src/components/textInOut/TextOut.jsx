@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Card } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
-import './fl.css';
+import './inNout.css';
 import CopyButton from '../Buttons/CopyButton';
 
 

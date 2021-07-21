@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Col, Card } from 'react-bootstrap'
 import RedButton from '../Buttons/RedButton.jsx';
-import './fl.css';
+import './inNout.css';
 
 export default function TextIn() {
   const [input, setInput] = useState('')
