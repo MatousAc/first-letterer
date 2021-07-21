@@ -1,9 +1,23 @@
 /* my own css */
+@media only screen and (min-width: 420px) {
+  #textIn, #textOut
+  {
+    height: 50em;
+    max-height: 90vh;
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 419px) {
+  #textIn, #textOut {
+    height: 20vh;
+    max-height: 45vh;
+    font-size: small;
+  }
+}
+
 #textIn, #textOut
 {
-  height: 50em;
-  max-height: 90vh;
-  font-size: 13px;
   width: -webkit-fill-available;
   border: none;
 }
