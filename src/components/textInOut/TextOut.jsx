@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Card } from 'react-bootstrap'
 import Button from '@material-ui/core/Button'
-import CopyButton from '../Buttons/CopyButton'
+import RedButton from '../Buttons/RedButton'
 import './inNout.css'
 
 
 function dq(s) {return document.querySelector(s)}
 
 export default function TextOut() {
+  function copyText() {
+    let text = dq("#textOut").value
+    navigator.clipboard.writeText(text)
+  }
+  
   return (
     <Col className="divider">
     <p>copy</p>
@@ -16,7 +21,9 @@ export default function TextOut() {
           <textarea id="textOut"></textarea>
         </Card.Body>
         <Card.Footer>
-          <CopyButton text={dq("#textOut")?.value}/>
+          <RedButton onclick={copyText}>
+            Copy Text
+          </RedButton>
         </Card.Footer>
       </Card>
     </Col>
