@@ -7,3 +7,15 @@
   width: -webkit-fill-available;
   border: none;
 }
+
+#textIn:focus, #textOut:focus
+{
+  /* lighter */
+  /* outline-color: #f50057 ; */ 
+  outline-color: #282c34 ;
+}
+
+.card-footer {
+  background-color: white !important;
+  border-top: 1px solid #53021c !important;
+}

@@ -12,7 +12,15 @@ export default function TextIn() {
     setInput(e.target.value)
   }
 
+  /// helper functions
   function dq(s) {return document.querySelector(s)}
+  function isChapter(phrase) {return phrase.includes("Chapter")||phrase.includes("chapter")}
+  
+  /// mark things as bold
+  function markBold(phrase) {
+
+    return false
+  }
 
   /// to clean up whitespace
   function cleanPhrases(phrases) {
@@ -42,7 +50,7 @@ export default function TextIn() {
   }
 
   function needsConverting(phrase) {
-    if (phrase.includes("Chapter")||phrase.includes("chapter")) {
+    if (isChapter(phrase)) {
       return false
     }
 
@@ -53,7 +61,7 @@ export default function TextIn() {
       return false
     }
     
-    /// if there is an empty string, this must be the beginning of a new verse
+    /// if there is an empty string, this must be the break between verses
     if (phrase === "" ) {
       newVerseFlag = true
       return false
@@ -83,6 +91,12 @@ export default function TextIn() {
     let phrases = input.split('\n')
     /// clean spaces out from the beginnings of the phrases
     phrases = cleanPhrases(phrases)
+
+    /// add MAKEBOLD markers
+    phrases = phrases.map(phrase => {
+      return markBold(phrase) ? `${phrase}MAKEBOLD` : phrase
+    })
+    
     /// redefine the array using each line
     phrases = phrases.map(phrase => {
       ///    if it's part of a verse,  convert the format, otherwise don't
@@ -100,7 +114,13 @@ export default function TextIn() {
         <textarea id="textIn" onChange={updateInput}>{input}</textarea>
       </Card.Body>
       <Card.Footer>
-        <Button onClick={convertFormat} variant="outlined">Add First Letters</Button>
+        <Button 
+          onClick={convertFormat} 
+          variant="outlined" 
+          color="secondary"
+        >
+          Add First Letters
+        </Button>
       </Card.Footer>
     </Card>
   </Col>
