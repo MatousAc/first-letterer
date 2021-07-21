@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
+import Embolden from "./Embolden";
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -32,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SimpleModal() {
+export default function SimpleModal({ children }) {
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
@@ -57,12 +58,7 @@ export default function SimpleModal() {
                 open={open}
                 onClose={handleClose}
             >
-                <div style={modalStyle} className={classes.paper}>
-                    <h2>Simple React Modal</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan odio enim, non pharetra est ultrices et.
-                    </p>
-                </div>
+                {children}
             </Modal>
         </div>
     );

@@ -2,6 +2,7 @@ import React from 'react'
 import { Col, Card } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
 import './fl.css';
+import CopyButton from './CopyButton';
 
 
 function dq(s) {return document.querySelector(s)}
@@ -20,7 +21,7 @@ export default function TextOut() {
         <textarea id="textOut"></textarea>
       </Card.Body>
       <Card.Footer>
-        <Button variant='outlined' onClick={copyText}>Copy Text</Button>
+        <CopyButton function={copyText}/>
       </Card.Footer>
     </Card>
   </Col>

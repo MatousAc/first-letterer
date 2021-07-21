@@ -1,7 +1,7 @@
 import React from 'react'
 import { Nav } from 'react-bootstrap'
-import Button from '@material-ui/core/Button';
 import SimpleModal from "./SimpleModal";
+import Embolden from './Embolden';
 import './navbar.css'
 
 
@@ -9,7 +9,9 @@ export default function Navbar() {
   return (
     <Nav>
       <Nav.Item>
-        {/* <SimpleModal /> */}
+        <SimpleModal>
+          <Embolden />
+        </SimpleModal>
       </Nav.Item>
     </Nav>
   )
