@@ -1,5 +1,4 @@
 import './App.css';
-import Navbar from './Navbar/Navbar.jsx'
 import { Container, Row } from 'react-bootstrap'
 import TextIn from './textInOut/TextIn';
 import TextOut from './textInOut/TextOut';
