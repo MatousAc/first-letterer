@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Col, Card } from 'react-bootstrap'
-import Button from '@material-ui/core/Button';
+import RedButton from '../Buttons/RedButton.jsx';
 import './fl.css';
 
 export default function TextIn() {
@@ -114,13 +114,11 @@ export default function TextIn() {
         <textarea id="textIn" onChange={updateInput}>{input}</textarea>
       </Card.Body>
       <Card.Footer>
-        <Button 
-          onClick={convertFormat} 
-          variant="outlined" 
-          color="secondary"
+        <RedButton 
+          onclick={convertFormat}
         >
           Add First Letters
-        </Button>
+        </RedButton>
       </Card.Footer>
     </Card>
   </Col>

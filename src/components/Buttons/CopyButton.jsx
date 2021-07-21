@@ -1,14 +1,16 @@
 import React from 'react'
-import Button from '@material-ui/core/Button';
+import RedButton from './RedButton';
 
-export default function CopyButton({ copyFunction }) {
+export default function CopyButton({ text }) {
+  function copyText() {
+    navigator.clipboard.writeText(text)
+  }
+  
   return (
-    <Button 
-      variant='outlined' 
-      onClick={copyFunction} 
-      color="secondary"
+    <RedButton 
+      onclick={copyText} 
     >
       Copy Text
-    </Button>
+    </RedButton>
   )
 }
