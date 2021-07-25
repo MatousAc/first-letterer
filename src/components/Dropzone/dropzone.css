@@ -1,0 +1,17 @@
+.dropzone {
+  width: 12rem;
+  height: 12rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  line-height: 1.5;
+  font-size: initial;
+  color: black;
+  
+  border: 3px dashed lightgrey;
+  border-radius: 1rem;
+  cursor: pointer;
+}

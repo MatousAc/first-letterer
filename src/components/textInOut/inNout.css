@@ -19,6 +19,9 @@
 #textIn, #textOut
 {
   width: -webkit-fill-available;
+  color: initial;
+  text-align: left;
+  overflow-y: scroll;
   border: none;
 }
 

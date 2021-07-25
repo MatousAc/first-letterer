@@ -3,9 +3,7 @@ import { Col, Card } from 'react-bootstrap'
 import Button from '@material-ui/core/Button'
 import RedButton from '../Buttons/RedButton'
 import './inNout.css'
-
-
-function dq(s) {return document.querySelector(s)}
+import { dq } from '../Functionality/Helpers'
 
 export default function TextOut() {
   function copyText() {

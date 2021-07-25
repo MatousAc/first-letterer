@@ -1,7 +1,8 @@
 import './App.css';
 import { Container, Row } from 'react-bootstrap'
-import TextIn from './textInOut/TextIn';
-import TextOut from './textInOut/TextOut';
+// import TextIn from './textInOut/TextIn';
+// import TextOut from './textInOut/TextOut';
+import DropIn from './DropIn'
 import Button from '@material-ui/core/Button';
 
 function App() {
@@ -14,8 +15,7 @@ function App() {
         }}
         >
           <Row>
-            <TextIn />
-            <TextOut />
+            <DropIn />
           </Row>
         </Container>
       </header>
