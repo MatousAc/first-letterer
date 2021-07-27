@@ -6,11 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Container
-        style={{
-          maxWidth: '90vw'
-        }}
-        >
+        <Container>
           <Row>
             <DropIn />
           </Row>
