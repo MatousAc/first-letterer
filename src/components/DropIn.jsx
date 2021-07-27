@@ -3,23 +3,42 @@ import { Col, Card } from 'react-bootstrap'
 import RedButton from './Buttons/RedButton.jsx';
 import Dropzone from './Dropzone/Dropzone'
 import './textInOut/inNout.css';
+import {
+  addFirstLetters,
+  createDocFrom
+} from './Functionality/Functionality'
 
 /// helper functions
 import { 
-  isChapter, 
-  isHeader, 
+  needsConverting,
   cleanPhrases, 
-  cleanWords, 
-  setNewVerseFlag, 
-  parseStuff,
   dq
 } from './Functionality/Helpers'
 
+
 export default function DropIn() {
   function downloadFiles() {
-    console.log("downloadingFiles")
+    return true
   }
   
+  function convertFormat() {
+    /// take the entire text and split up the lines
+    let phrases = [] //input.split('\n')
+    /// clean spaces out from the beginnings of the phrases
+    phrases = cleanPhrases(phrases)
+    
+    /// redefine the array using each line
+    phrases = phrases.map(phrase => {
+      ///    if it's part of a verse,  add first letters, otherwise don't
+      return needsConverting(phrase) ? addFirstLetters(phrase) : phrase
+    })
+
+    // let output = phrases.join('\n')
+    // document.querySelector("#textOut").value = output
+    // return phrases
+    createDocFrom(phrases)
+  }
+
   return (
     <Col className="divider">
     <Card>

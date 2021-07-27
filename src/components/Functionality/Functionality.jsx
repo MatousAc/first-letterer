@@ -1,28 +1,30 @@
 import { Document, Section, Paragraph, Textrun, Packer } from "docx";
-import * as fs from "fs"
 /// helper functions
-import { 
-  cleanWords, 
-  style,
-  dq
-} from './Helpers'
-
+import { cleanWords, style, dq } from './Helpers'
+import Docxtemplater from 'docxtemplater';
+import PizZip from 'pizzip';
+// import PizZipUtils from 'pizzip/utils/index.js';
+// import { saveAs } from 'file-saver';
 
 export default function process(files) {
   files.forEach(file => {
-    console.log(file.name, file.size)
-    console.log(file)
-
-    // const reader = new FileReader
-    // reader.onload = async (e) => { 
-    //   const text = (e.target.result)
-    //   console.log("line 24", text)
-    // };
-
-    // let text = reader.readAsBinaryString(file)
+      let text = readWord(file)
+      console.log(text)
   })
 }
 
+function readWord(file)
+{ let reader = new FileReader() 
+  reader.readAsBinaryString(file) 
+  reader.onload = (e) => 
+  { var zip = new PizZip(reader.result)
+    var docx = new Docxtemplater().loadZip(zip) 
+
+    const text = docx.getFullText()
+    console.log(text)
+    return text
+  }
+}
 
 function addFirstLetters(phrase) {  
   let words = phrase.split(' ')
