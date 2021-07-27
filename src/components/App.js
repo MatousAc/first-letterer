@@ -1,8 +1,6 @@
 import './App.css';
 import { Container, Row } from 'react-bootstrap'
-import TextIn from './textInOut/TextIn';
-import TextOut from './textInOut/TextOut';
-import DropIn from './DropIn'
+import DropIn from './textInOut/DropIn'
 
 function App() {
   return (

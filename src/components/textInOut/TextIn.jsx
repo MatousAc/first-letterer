@@ -5,7 +5,7 @@ import './inNout.css';
 
 import {
   addFirstLetters,
-  createDocFrom
+  makeDoc
 } from '../Functionality/Functionality'
 
 /// helper functions
@@ -37,7 +37,7 @@ export default function TextIn() {
     // let output = phrases.join('\n')
     // document.querySelector("#textOut").value = output
     // return phrases
-    createDocFrom(phrases)
+    makeDoc(phrases)
   }
   
   return (

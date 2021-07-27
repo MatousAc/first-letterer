@@ -19,11 +19,45 @@ function setNewVerseFlag(phrase) {
   }
 }
 
+/// to clean up whitespace
+function cleanPhrases(phrases) {
+  /// remove leading whitespace
+  let newPhrases = phrases.map(phrase => {
+    let ps = phrase.split(' ')
+    return (ps[0] === '') ? phrase.substring(1,phrase.length) : phrase
+  })
+  
+  /// remove trailing whitespace
+  newPhrases = newPhrases.map(phrase => {
+    let ps = phrase.split(' ')
+    return (ps[ps.length - 1] === '') ? phrase.substring(0, phrase.length - 1) : phrase
+  })
+  
+  return newPhrases
+}
+
+/// stripping punctuation using regex
+function cleanWords(words) {
+  return words.map(word => {
+    return word.replace(/[.,'‘’“”"\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+  })
+}
+
+function needsConverting(phrase) {
+  // we don't need to convert headers
+  if (isChapter(phrase)||isHeader(phrase)||isKRs(phrase)) return false
+  
+  /// if there is an empty string, this must be the break between verses
+  setNewVerseFlag(phrase)
+  if (phrase === "" ) return false
+  
+  return true
+}
+
 /// styles textruns
 function style(phrase) {
   let basicStyle = {
     size: 12 * 2,
-    // spacing: {line: 414}
   }
   
   if (isKRs(phrase)) {
@@ -74,45 +108,6 @@ function style(phrase) {
     text: phrase,
     ...basicStyle
   })]
-}
-
-/// to clean up whitespace
-function cleanPhrases(phrases) {
-  // split phrases
-  
-  /// remove leading whitespace
-  let newPhrases = phrases.map(phrase => {
-    let ps = phrase.split(' ')
-    return (ps[0] === '') ? phrase.substring(1,phrase.length) : phrase
-  })
-
-  /// remove trailing whitespace
-  newPhrases = newPhrases.map(phrase => {
-    let ps = phrase.split(' ')
-    return (ps[ps.length - 1] === '') ? phrase.substring(0, phrase.length - 1) : phrase
-  })
-
-  return newPhrases
-}
-
-/// remove punctuation
-function cleanWords(words) {
-  /// stripping punctuation using regex
-  return words.map(word => {
-    return word.replace(/[.,'‘’“”"\/#!$%\^&\*;:{}=\-_`~()]/g,"")
-  })
-}
-
-
-function needsConverting(phrase) {
-  // we don't need to convert headers
-  if (isChapter(phrase)||isHeader(phrase)||isKRs(phrase)) return false
-  
-  /// if there is an empty string, this must be the break between verses
-  setNewVerseFlag(phrase)
-  if (phrase === "" ) return false
-
-  return true
 }
 
 function dq(s) {return document.querySelector(s)}

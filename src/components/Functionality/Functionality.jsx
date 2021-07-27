@@ -1,6 +1,6 @@
-import { Document, Section, Paragraph, Textrun, Packer } from "docx";
+import { Document, Paragraph, Packer } from "docx";
 /// helper functions
-import { cleanWords, style, dq } from './Helpers'
+import { cleanWords, style, cleanPhrases, needsConverting } from './Helpers'
 import Docxtemplater from 'docxtemplater';
 import PizZip from 'pizzip';
 
@@ -11,7 +11,8 @@ export default async function process(files) {
     readWord(file)
     .then(data => {
       phrases = data.split("$$")
-      console.log(phrases)
+      // console.log(phrases)
+      grind(phrases)
     })
   })
 }
@@ -32,6 +33,19 @@ function readWord(file) {
   })
 }
 
+function grind(phrases) {
+  /// clean spaces out from the beginnings of the phrases
+  phrases = cleanPhrases(phrases)
+  
+  /// redefine the array using each line
+  phrases = phrases.map(phrase => {
+    ///    if it's part of a verse,  add first letters, otherwise don't
+    return needsConverting(phrase) ? addFirstLetters(phrase) : phrase
+  })
+
+  makeDoc(phrases)
+}
+
 function addFirstLetters(phrase) {  
   let words = phrase.split(' ')
   
@@ -46,14 +60,12 @@ function addFirstLetters(phrase) {
   return `${phrase}\t ${first_letters.join('    ')}`
 }
 
-function createDocFrom(phrases) {
-  console.table(phrases)
+function makeDoc(phrases) {
   const paragraphs = phrases.map(phrase => {
     return new Paragraph({
       children: [...style(phrase)]
     })
   })
-  // console.log(paragraphs)
   
   const doc = new Document({
     creator: "Ac Hybl",
@@ -62,12 +74,9 @@ function createDocFrom(phrases) {
       children: [...paragraphs]
     }]
   })
-
-  console.log(doc)
-
-  // // Used to export the file into a .docx file
+  
+  /// download each doc
   Packer.toBlob(doc).then(blob => {
-    console.log(blob)
     var link = document.createElement('a')
     link.href=window.URL.createObjectURL(blob);
     link.download="result.docx";
@@ -77,5 +86,5 @@ function createDocFrom(phrases) {
 
 export {
   addFirstLetters,
-  createDocFrom
+  makeDoc
 }
