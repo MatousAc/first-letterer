@@ -4,7 +4,7 @@ this basic tool takes text and outputs the first letter of every word. this is o
 # how to use
 Go to the [https://first-letterer.herokuapp.com/](first_letterer) app.
 
-Paste text into the field and then click the button to add first letters.
+Drop a MS Word file in and allow site to download new file.
 
 ## different formats
 
