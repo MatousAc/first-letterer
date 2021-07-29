@@ -13,6 +13,7 @@
     "docx-parser": "^0.2.1",
     "docx4js": "^3.2.17",
     "docxtemplater": "^3.22.5",
+    "hookrouter": "^1.2.5",
     "pizzip": "^3.0.6",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
