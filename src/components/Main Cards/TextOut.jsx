@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Col, Card } from 'react-bootstrap'
-import Button from '@material-ui/core/Button'
 import RedButton from '../Buttons/RedButton'
-import './inNout.css'
 import { dq } from '../Functionality/Helpers'
+import './card.css'
 
 export default function TextOut() {
   function copyText() {

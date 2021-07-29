@@ -3,7 +3,7 @@ import {useDropzone} from 'react-dropzone';
 import process from '../Functionality/Functionality.jsx'
 import './dropzone.css'
 
-export default function Dropzone(props) {
+export default function Dropzone() {
   const onDrop = useCallback(acceptedFiles => {
     process(acceptedFiles)
   }, [])
@@ -16,7 +16,7 @@ export default function Dropzone(props) {
     fileRejections
   } = useDropzone({
     onDrop, // to trigger a function on drop
-    accept: '.docx' // accept these file types
+    accept: '.docx' // accept these file types only
   })
   
   return (
