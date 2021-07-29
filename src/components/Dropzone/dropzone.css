@@ -1,11 +1,14 @@
 .dropzone {
-  width: 100%;
+  width: 60vw;
+  max-width: 90vw;
   min-height: 12rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  background-color: white;
+  
   text-align: center;
   line-height: 1.5;
   font-size: initial;
@@ -14,4 +17,7 @@
   border: 3px dashed lightgrey;
   border-radius: 1rem;
   cursor: pointer;
+
+  transition: .2s ease-in-out;
+  
 }
