@@ -12,7 +12,9 @@ export default async function process(files) {
     .then(data => {
       phrases = data.split("$$")
       // console.log(phrases)
-      grind(phrases)
+      phrases = grind(phrases)
+      let fileName = file.name.replace(".docx", '')
+      makeDoc(phrases, `${fileName} Converted.docx`)
     })
   })
 }
@@ -43,7 +45,7 @@ function grind(phrases) {
     return needsConverting(phrase) ? addFirstLetters(phrase) : phrase
   })
 
-  makeDoc(phrases)
+  return phrases
 }
 
 function addFirstLetters(phrase) {  
@@ -60,7 +62,7 @@ function addFirstLetters(phrase) {
   return `${phrase}\t ${first_letters.join('    ')}`
 }
 
-function makeDoc(phrases) {
+function makeDoc(phrases, name = "result.docx") {
   const paragraphs = phrases.map(phrase => {
     return new Paragraph({
       children: [...style(phrase)]
@@ -79,7 +81,7 @@ function makeDoc(phrases) {
   Packer.toBlob(doc).then(blob => {
     var link = document.createElement('a')
     link.href=window.URL.createObjectURL(blob);
-    link.download="result.docx";
+    link.download = name;
     link.click();
   })
 }
